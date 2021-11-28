@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Validación De Un Modelo | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Validación De Un Modelo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Validación de un modelo: Respuesta a una campaña de mail usando Naïve Bayes" />
+<meta property="og:description" content="Validación de un modelo: Respuesta a una campaña de mail usando Naïve Bayes" />
+<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/28/Validaci%C3%B3n-de-un-modelo.html" />
+<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/28/Validaci%C3%B3n-de-un-modelo.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-28T00:00:00-06:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-11-28T00:00:00-06:00","url":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/28/Validaci%C3%B3n-de-un-modelo.html","@type":"BlogPosting","headline":"Validación De Un Modelo","dateModified":"2021-11-28T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/28/Validaci%C3%B3n-de-un-modelo.html"},"description":"Validación de un modelo: Respuesta a una campaña de mail usando Naïve Bayes","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Machine-Learning-Portfolio/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Machine-Learning-Portfolio/about/">About Me</a><a class="page-link" href="/Machine-Learning-Portfolio/search/">Search</a><a class="page-link" href="/Machine-Learning-Portfolio/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Validación De Un Modelo</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-28T00:00:00-06:00" itemprop="datePublished">
+        Nov 28, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      5 min read
+    
+</span></p>
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="validación-de-un-modelo-respuesta-a-una-campaña-de-mail-usando-naïve-bayes">Validación de un modelo: Respuesta a una campaña de mail usando Naïve Bayes</h1>
+
+<p>La calidad de un modelo de Machine Learning no se evalúa exclusivamente con los resultados que este genera durante su entrenamiento y validación. La aplicabilidad de cualquier modelo debe considerar múltiples métricas que demuestren su efectividad en la realidad.</p>
+
+<p>Evaluar incorrectamente un modelo podría generar expectativas irrealistas de su funcionamiento, las cuales harán aparecer problemas en la fase de producción, al utilizar el modelo con datos de la realidad.</p>
+
+<p>Por tanto, el desempeño real de un modelo podría no ser aceptable y en muchos casos generar daños elevados para los clientes, incluyendo dinero y vidas.</p>
+
+<p>Un error frecuente de los analistas, es sobredimensionar el funcionamiento de un modelo en base al porcentaje de precisión que arroje. El objetivo de este documento será evaluar distintas técnicas de validación de modelos de Machine Learning para un caso particular.</p>
+
+<h2 id="escenario">Escenario</h2>
+
+<p>Para este caso, utilizaremos la herramienta de Rapidminer para generar datos de ejemplo. El objetivo es predecir si una persona responderá a una campaña de marketing por mail utilizando atributos demográficos.</p>
+
+<p>Para ello, existe un operador en Rapidminer “Generate Direct Mailing Data”. Este operador utiliza dos parámetros:</p>
+
+<ul>
+  <li>
+    <p>Número de ejemplos a generar. En este caso usaré 10000.</p>
+  </li>
+  <li>
+    <p>Semilla local. Activar este parámetro me permitirá repetir el ejercicio manteniendo los datos generados.</p>
+  </li>
+</ul>
+
+<h2 id="preparación-de-datos">Preparación de Datos</h2>
+
+<p>El operador de generación arroja un dataset del tamaño indicado con los siguientes predictores:</p>
+
+<ul>
+  <li>
+    <p>Nombre</p>
+  </li>
+  <li>
+    <p>Edad</p>
+  </li>
+  <li>
+    <p>Estilo de vida (Tres categorías: Activo, Cómodo o Saludable)</p>
+  </li>
+  <li>
+    <p>Código Postal</p>
+  </li>
+  <li>
+    <p>Estado Civil</p>
+  </li>
+  <li>
+    <p>Tipo de vehículo (Dos categorías: Práctico o Costoso)</p>
+  </li>
+  <li>
+    <p>Deporte (Tres deportes distintos: Bádminton, Fútbol y Atletismo)</p>
+  </li>
+  <li>
+    <p>Salario</p>
+  </li>
+  <li>
+    <p>Respuesta al mail</p>
+  </li>
+</ul>
+
+<p>Antes de comenzar a trabajar, fue necesario realizar algunos ajustes. En primer lugar, la variable a predecir (Si la persona realmente responderá a la campaña por mail) tiene dos posibles valores Response / No Responde, por lo que se puede tratar esta variable como Binomial.</p>
+
+<p>El dataset completo está etiquetado, por lo que podremos dividirlo en dos para separar en Entrenamiento y Test. Aplicaremos la regla del 80/20 y además configuraremos un Split Validation para el dataset de entrenamiento.</p>
+
+<p>En este caso, la validación tendrá una proporción 70/30. El flujo resultante es el siguiente:</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-28-Validación-de-un-modelo/media/image1.png" alt="" /></p>
+
+<h2 id="modelo">Modelo</h2>
+
+<p>Al enfrentarnos a un problema supervisado de clasificación binaria, disponemos de una gran variedad de modelos para probar. Sin embargo, como el objetivo es analizar las métricas de Performance, optaremos por un modelo sencillo de Naive Bayes sin pensar mucho en cuál será el más adecuado.</p>
+
+<p>Dentro del operador de Split Validation, ubiqué el operador de Naive Bayes, aplicación del modelo y luego un operador de Performance activando las siguientes opciones:</p>
+
+<ul>
+  <li>
+    <p>Accuracy</p>
+  </li>
+  <li>
+    <p>False positive</p>
+  </li>
+  <li>
+    <p>False negative</p>
+  </li>
+  <li>
+    <p>True positive</p>
+  </li>
+  <li>
+    <p>True negative</p>
+  </li>
+  <li>
+    <p>Sensivity</p>
+  </li>
+  <li>
+    <p>Specificity</p>
+  </li>
+  <li>
+    <p>AUC</p>
+  </li>
+</ul>
+
+<p>Por último, utilicé el dataset reservado como Hold-out para testear el modelo generado. A nivel principal del flujo, se debe agregar un operador de Apply Model con el Dataset de test.</p>
+
+<p>Como última medida de performance, agregué una Lift Chart a la salida del Apply Model. Este gráfico apuntará al valor de la clase a predecir “Response”.</p>
+
+<p>##</p>
+
+<h2 id="resultados">Resultados</h2>
+
+<p>El proceso de Rapidminer genera la siguiente matriz de confusión para los resultados del dataset de entrenamiento:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Response reales</th>
+      <th>No Response reales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Response Predichos</td>
+      <td>56</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>No Response Predichos</td>
+      <td>15</td>
+      <td>136</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Si tomamos como clase positiva a los valores “Response”, obtendremos los siguientes datos:</p>
+
+<ul>
+  <li>
+    <p>Falsos positivos (FP): 33</p>
+  </li>
+  <li>
+    <p>Falsos negativos (FN): 15</p>
+  </li>
+  <li>
+    <p>Verdaderos positivos (TP): 56</p>
+  </li>
+  <li>
+    <p>Verdaderos negativos (TN): 136</p>
+  </li>
+</ul>
+
+<p>Para estos valores, podemos verificar las métricas teóricas y contrastarlas con los resultados de Rapidminer.</p>
+
+<p>Sensibilidad: <em>TP / (TP + FN)</em></p>
+
+<p>56 / (56 + 15) = 56 / 71 = 0.788 =&gt; <strong>78.8%</strong></p>
+
+<p>Especificidad: <em>TN / (TN + FP)</em></p>
+
+<p>136 / (136 + 33) = 136 / 169 = 0.804 = <strong>80.4%</strong></p>
+
+<p>Estos valores son idénticos a los calculados automáticamente por Rapidminer:</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-28-Validación-de-un-modelo/media/image2.png" alt="" /></p>
+
+<p>Resulta interesante analizar los valores de Class Recall. Puntualmente, estos valores representan la proporción en que una clase dada de los datos fue predicha correctamente.</p>
+
+<p>Este valor tiende a ser influenciado por la representación de la clase en el Dataset. Es decir, el modelo podrá comportarse adecuadamente en general, pero muy deficientemente para una clase en particular. Este efecto se maximiza cuando otras clases están sobrerepresentadas en el Dataset. Cuando esto sucede, se dice que el Dataset está desbalanceado.</p>
+
+<p>En este caso, el Recall para los “No Response” es mayor que el Recall para los “Response”. Si analizamos la representación de cada clase en el dataset inicial, podemos ver que realmente existe una relación entre los valores resultantes y la proporción de las clases.</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-28-Validación-de-un-modelo/media/image3.png" alt="" /></p>
+
+<p>Con respecto a la curva ROC y el valor AUC, podemos decir que el modelo se comporta relativamente bien. El valor resultante del área bajo la curva es de 0.861. Supera el valor de la elección aleatoria, donde el área sería de 0.5.</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-28-Validación-de-un-modelo/media/image4.png" alt="" /></p>
+
+<p>Tomando en consideración este mismo concepto de mejora sobre la selección aleatoria, la confianza de predicción del modelo va a ser distinta para cada uno de los valores que clasifica.</p>
+
+<p>A partir de esta información, centrándonos en los verdaderos positivos, es posible construir un gráfico que muestre como varía la mejora del modelo en función de la confianza.</p>
+
+<p>De esta manera, es posible saber la mejora sobre la elección aleatoria, en definitiva, que tan bien funciona un modelo, tomando parte de la población total.</p>
+
+<p>En este caso encontré que la cobertura alcanza el 70% en la tercera barra del gráfico. Este dato es interesante porque significaría que un 30% de la población es necesaria para lograr un 70%.</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-28-Validación-de-un-modelo/media/image5.png" alt="" /></p>
+
+  </div><a class="u-url" href="/Machine-Learning-Portfolio/2021/11/28/Validaci%C3%B3n-de-un-modelo.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Machine-Learning-Portfolio/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Machine-Learning-Portfolio/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
