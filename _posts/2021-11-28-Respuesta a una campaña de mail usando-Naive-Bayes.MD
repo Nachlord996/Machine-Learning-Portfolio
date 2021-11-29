@@ -45,7 +45,7 @@ En este caso, la validación tendrá una proporción 70/30.
 
 El flujo resultante es el siguiente:
 
-![]({{ site.baseurl }}/images/logo.png "fast.ai's logo")
+![]({{ site.baseurl }}/images/Validacion-preparacion-de-datos.png "Flujo resultante")
 
 ## Modelo
 
@@ -92,7 +92,7 @@ Para estos valores, podemos verificar las métricas teóricas y contrastarlas co
 
 Estos valores son idénticos a los calculados automáticamente por Rapidminer:
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![]({{ site.baseurl }}/images/Validacion-resultados-RM.png "Resultados estadísticos de Performance RM")
 
 Resulta interesante analizar los valores de Class Recall. Puntualmente, estos valores representan la proporción en que una clase dada de los datos fue predicha correctamente. 
 
@@ -100,12 +100,13 @@ Este valor tiende a ser influenciado por la representación de la clase en el Da
 
 En este caso, el Recall para los “No Response” es mayor que el Recall para los “Response”. Si analizamos la representación de cada clase en el dataset inicial, podemos ver que realmente existe una relación entre los valores resultantes y la proporción de las clases.
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![]({{ site.baseurl }}/images/Validacion-resultados-RM-Cunt.png "Proporción de clases")
+
 
 > Con respecto a la curva ROC y el valor AUC, podemos decir que el modelo se comporta relativamente bien. El valor resultante del área bajo la curva es de 0.861. Supera el valor de la elección aleatoria, donde el área sería de 0.5.
 >
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![]({{ site.baseurl }}/images/Validacion-resultados-RM-ROC_Curves.png "Curvas ROC")
 
 Tomando en consideración este mismo concepto de mejora sobre la selección aleatoria, la confianza de predicción del modelo va a ser distinta para cada uno de los valores que clasifica.
 
@@ -115,5 +116,5 @@ De esta manera, es posible saber la mejora sobre la elección aleatoria, en defi
 
 En este caso encontré que la cobertura alcanza el 70% en la tercera barra del gráfico. Este dato es interesante porque significaría que un 30% de la población es necesaria para lograr un 70%.
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![]({{ site.baseurl }}/images/Validacion-resultados-RM-Lift-Chart.png "Lift Chart")
 
