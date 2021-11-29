@@ -45,7 +45,7 @@ En este caso, la validación tendrá una proporción 70/30.
 
 El flujo resultante es el siguiente:
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![]({{ site.baseurl }}/images/logo.png "fast.ai's logo")
 
 ## Modelo
 
