@@ -1,7 +1,5 @@
 # **Validación de un modelo**: Respuesta a una campaña de mail usando Naïve Bayes
 
-#
-
 La calidad de un modelo de Machine Learning no se evalúa exclusivamente con los resultados que este genera durante su entrenamiento y validación. La aplicabilidad de cualquier modelo debe considerar múltiples métricas que demuestren su efectividad en la realidad.
 
 Evaluar incorrectamente un modelo podría generar expectativas irrealistas de su funcionamiento, las cuales harán aparecer problemas en la fase de producción, al utilizar el modelo con datos de la realidad. 
