@@ -1,4 +1,10 @@
-# **Validación de un modelo**: Respuesta a una campaña de mail usando Naïve Bayes
+---
+toc: true
+layout: post
+description: A minimal example of using markdown with fastpages.
+categories: [Naïve Bayes, Validación del modelo, ROC, Lift Charts]
+title: "Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes"
+---
 
 La calidad de un modelo de Machine Learning no se evalúa exclusivamente con los resultados que este genera durante su entrenamiento y validación. La aplicabilidad de cualquier modelo debe considerar múltiples métricas que demuestren su efectividad en la realidad.
 
