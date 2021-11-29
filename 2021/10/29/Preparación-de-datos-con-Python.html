@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Preparación De Datos Con Python | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Preparación De Datos Con Python" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Preparación de datos con Python" />
+<meta property="og:description" content="Preparación de datos con Python" />
+<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/10/29/Preparaci%C3%B3n-de-datos-con-Python.html" />
+<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/10/29/Preparaci%C3%B3n-de-datos-con-Python.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/10/29/Preparaci%C3%B3n-de-datos-con-Python.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/10/29/Preparaci%C3%B3n-de-datos-con-Python.html"},"headline":"Preparación De Datos Con Python","dateModified":"2021-10-29T00:00:00-05:00","datePublished":"2021-10-29T00:00:00-05:00","description":"Preparación de datos con Python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Machine-Learning-Portfolio/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Machine-Learning-Portfolio/about/">About Me</a><a class="page-link" href="/Machine-Learning-Portfolio/search/">Search</a><a class="page-link" href="/Machine-Learning-Portfolio/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Preparación De Datos Con Python</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-10-29T00:00:00-05:00" itemprop="datePublished">
+        Oct 29, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="preparación-de-datos-con-python"><strong>Preparación de datos con Python</strong></h1>
+
+<p>Actualmente existen múltiples herramientas que permiten una exploración profunda sobre los datos iniciales, las cuales son de gran utilidad para el analista que decide comenzar con este proceso. Desde una planilla de cálculo como Microsoft Excel, hasta módulos especializados en herramientas productivas, existen diversos mecanismos para llevar a cabo la preparación de los datos, teniendo como objetivo generar los insumos para un modelo de Machine Learning.</p>
+
+<p>En esta ocasión, se pretende investigar los distintos mecanismos que dispone Python y las librerías desarrolladas por la comunidad, para el análisis y tratamiento de datos.</p>
+
+<p>Todo el código Python será escrito en un Jupyter Notebook, aprovechando las facilidades que este tipo de documentos ofrece para la ejecución de este. Además, utilizaré la herramienta Google Colab, la cual resuelve las referencias a las librerías de Python a utilizar automáticamente.</p>
+
+<h2 id="importar-librerías-y-lectura-del-dataset">Importar librerías y lectura del Dataset</h2>
+
+<p>El primer paso consiste en importar todas las librerías a utilizar durante el proyecto.</p>
+
+<ul>
+  <li>
+    <p>NumPy</p>
+  </li>
+  <li>
+    <p>Pandas</p>
+  </li>
+  <li>
+    <p>Seaborn</p>
+  </li>
+  <li>
+    <p>MatPlotLib</p>
+  </li>
+</ul>
+
+<p>Luego se debe leer el contenido del archivo “Titanic-Dataset.csv”. Al ejecutar el código se puede visualizar una vista previa de los registros. Debería verse de esta manera:</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image1.png" alt="Icono Descripción generada automáticamente" /></p>
+
+<h2 id="visualizar-dataset">Visualizar Dataset</h2>
+
+<p>Por medio de las siguientes instrucciones es posible identificar las columnas con valores numéricos. El resto de los atributos son de tipo categórico.</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image2.png" alt="Interfaz de usuario gráfica, Texto Descripción generada automáticamente" /></p>
+
+<p>La generación de gráficos para visualizar el Dataset puede realizarse mediante la librería Seaborn. Para ejemplificar, es posible generar un gráfico que ilustre la tasa de sobrevivientes, partiendo de la clase y el sexo del individuo.</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image3.png" alt="Gráfico, Gráfico de barras Descripción generada automáticamente" /></p>
+
+<p>##</p>
+
+<h2 id="valores-faltantes-e-imputación">Valores faltantes e imputación</h2>
+
+<p>Este Dataset presenta valores faltantes únicamente en los atributos Age, Cabin y Embarked. Para verificar esto, se utiliza el siguiente código:</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image4.png" alt="Imagen que contiene Tabla Descripción generada automáticamente" /></p>
+
+<p>Como se puede ver en este conteo de valores faltantes, los atributos más impactados son Age y Cabin. En el caso de edad, será necesario aplicar una imputación de valores, siendo este atributo importante en la predicción del modelo. Probablemente, los atributos Cabin y Embarked no impacten significativamente en el desempeño del modelo, por lo que se podría considerar eliminarlos.</p>
+
+<p>La eliminación de atributos se realiza con el siguiente código. Además se eliminará el número de ticket, el cual no aporta ninguna información para la predicción.</p>
+
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image5.png" alt="" /></p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image6.png" alt="Gráfico Descripción generada automáticamente con confianza baja" /></p>
+
+<p>Para decidir el valor que será imputado al atributo edad, es conveniente analizar la distribución de este. Esto se puede realizar mediante la librería matplotlib.</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image7.png" alt="Gráfico, Gráfico de líneas, Histograma Descripción generada automáticamente" /></p>
+
+<p>La distribución observada es bastante centrada pero algo inclinada hacia un lado, por lo que una buena decisión sería imputar la edad utilizando la mediana de los datos. Esto se realiza mediante el siguiente código:</p>
+
+<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image8.png" alt="Interfaz de usuario gráfica, Texto, Aplicación Descripción generada automáticamente" /></p>
+
+<p>Al concluir este paso, tenemos asegurado que los datos no contienen datos faltantes. Por lo que serán de mayor utilidad y precisión a la hora de entrenar el modelo.</p>
+
+  </div><a class="u-url" href="/Machine-Learning-Portfolio/2021/10/29/Preparaci%C3%B3n-de-datos-con-Python.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Machine-Learning-Portfolio/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Machine-Learning-Portfolio/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
