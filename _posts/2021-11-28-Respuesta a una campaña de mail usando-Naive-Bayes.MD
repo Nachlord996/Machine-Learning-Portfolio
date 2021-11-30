@@ -1,7 +1,7 @@
 ---
 toc: true
 layout: post
-description: A minimal example of using markdown with fastpages.
+description: Se desea predecir si un cliente responderá a la campaña de marketing enviada por mail.
 categories: [Naïve Bayes, Validación del modelo, ROC, Lift Charts]
 title: "Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes"
 ---
