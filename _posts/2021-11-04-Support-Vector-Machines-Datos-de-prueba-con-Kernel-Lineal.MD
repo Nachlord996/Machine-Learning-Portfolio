@@ -45,7 +45,7 @@ El dataset a utilizar es el siguiente:
 
 Los datos a utilizar cumplen con los requisitos de SVM. Todos los predictores son numéricos y la variable objetivo es binaria.
 
-# Modelo
+## Modelo
 
 La implemententación del modelo será en Rapidminer. El primer paso será preparar los datos y cargarlos con un operador Retrieve. Es bastante interesante aprovechar esta oportunidad y visualizar los datos mediantes un gráfico plot.
 
