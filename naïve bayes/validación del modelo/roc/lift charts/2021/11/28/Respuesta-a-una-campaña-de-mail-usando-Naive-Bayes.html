@@ -8,15 +8,15 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A minimal example of using markdown with fastpages." />
-<meta property="og:description" content="A minimal example of using markdown with fastpages." />
+<meta name="description" content="Se desea predecir si un cliente responderá a la campaña de marketing enviada por mail." />
+<meta property="og:description" content="Se desea predecir si un cliente responderá a la campaña de marketing enviada por mail." />
 <link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html" />
 <meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html" />
 <meta property="og:site_name" content="Ignacio Martínez" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-11-28T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html","@type":"BlogPosting","headline":"Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes","dateModified":"2021-11-28T00:00:00-06:00","datePublished":"2021-11-28T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html"},"description":"A minimal example of using markdown with fastpages.","@context":"https://schema.org"}</script>
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html","@type":"BlogPosting","headline":"Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes","dateModified":"2021-11-28T00:00:00-06:00","datePublished":"2021-11-28T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/na%C3%AFve%20bayes/validaci%C3%B3n%20del%20modelo/roc/lift%20charts/2021/11/28/Respuesta-a-una-campa%C3%B1a-de-mail-usando-Naive-Bayes.html"},"description":"Se desea predecir si un cliente responderá a la campaña de marketing enviada por mail.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="Ignacio Martínez" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -71,7 +71,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes</h1><p class="page-description">A minimal example of using markdown with fastpages.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-28T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Validación de un modelo: Respuseta a una campaña de mail usando Naïve Bayes</h1><p class="page-description">Se desea predecir si un cliente responderá a la campaña de marketing enviada por mail.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-28T00:00:00-06:00" itemprop="datePublished">
         Nov 28, 2021
       </time>
        • <span class="read-time" title="Estimated read time">

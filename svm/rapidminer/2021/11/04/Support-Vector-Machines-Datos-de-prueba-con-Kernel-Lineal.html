@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Support Vector Machines: Predicción de clase para coordenadas en espacio 2D | Ignacio Martínez</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Support Vector Machines: Predicción de clase para coordenadas en espacio 2D" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Predecir la variable objetivo binaria a partir de un Dataset reducido usando SVM con Kernel lineal." />
+<meta property="og:description" content="Predecir la variable objetivo binaria a partir de un Dataset reducido usando SVM con Kernel lineal." />
+<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/svm/rapidminer/2021/11/04/Support-Vector-Machines-Datos-de-prueba-con-Kernel-Lineal.html" />
+<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/svm/rapidminer/2021/11/04/Support-Vector-Machines-Datos-de-prueba-con-Kernel-Lineal.html" />
+<meta property="og:site_name" content="Ignacio Martínez" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-04T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/svm/rapidminer/2021/11/04/Support-Vector-Machines-Datos-de-prueba-con-Kernel-Lineal.html","@type":"BlogPosting","headline":"Support Vector Machines: Predicción de clase para coordenadas en espacio 2D","dateModified":"2021-11-04T00:00:00-05:00","datePublished":"2021-11-04T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/svm/rapidminer/2021/11/04/Support-Vector-Machines-Datos-de-prueba-con-Kernel-Lineal.html"},"description":"Predecir la variable objetivo binaria a partir de un Dataset reducido usando SVM con Kernel lineal.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="Ignacio Martínez" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Machine-Learning-Portfolio/">Ignacio Martínez</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Machine-Learning-Portfolio/about/">About Me</a><a class="page-link" href="/Machine-Learning-Portfolio/search/">Search</a><a class="page-link" href="/Machine-Learning-Portfolio/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Support Vector Machines: Predicción de clase para coordenadas en espacio 2D</h1><p class="page-description">Predecir la variable objetivo binaria a partir de un Dataset reducido usando SVM con Kernel lineal.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-04T00:00:00-05:00" itemprop="datePublished">
+        Nov 4, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#SVM">SVM</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Rapidminer">Rapidminer</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#contexto">Contexto</a></li>
+<li class="toc-entry toc-h2"><a href="#datos">Datos</a></li>
+<li class="toc-entry toc-h1"><a href="#modelo">Modelo</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#resultados">Resultados</a></li>
+</ul>
+</li>
+</ul><p>La clasificación binaria es un problema recurrente en el ámbito de los modelos supervisados de Machine Learning. Al existir exclusivamente dos clases, la visualización de los datos (Mayoritariamente en dos dimensiones) otorga la capacidad de decidir enfrentar con el problema con un tipo de algoritmos en particular.</p>
+
+<p>En este artículo se demostrará el uso de un algoritmo reciente para clasificación binaria llamado “Support Vector Machines”. El mismo recoge aspectos de la Estadística, la Teoría Matemática de la Optimización y de las Ciencias de la Computación.</p>
+
+<h2 id="contexto">
+<a class="anchor" href="#contexto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexto</h2>
+
+<p>Para este ejercicio se utilizará un Dataset de ejemplo de coordenadas bidimensionales en el plano. Cada una de ellas tendrá una clase correspondiente, la cual será la variable objetivo a predecir del modelo. El ejercicio fue extraído del libro “Predictive Analytics and Data Mining” (Kotu, 2015).</p>
+
+<ul>
+  <li>Coordenada X1 [Numérica]</li>
+  <li>Coordenada X2 [Numérica]</li>
+  <li>Clase [Binomial (A - B)]</li>
+</ul>
+
+<p>El dataset es muy reducido, contiene solamente 17 ejemplos. Por tanto, entrenaremos un modelo de SVM utilizando la totalidad de los datos disponibles. Para testear utilizaremos puntos elegidos estratégicamente que nos permitan valorar su desempeño.</p>
+
+<h2 id="datos">
+<a class="anchor" href="#datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Datos</h2>
+<p>#
+El dataset a utilizar es el siguiente:
+| x1   	| x2   	| Clase 	|
+|——	|——	|——-	|
+| 1.5  	| 2.5  	| A     	|
+| 2    	| 2    	| A     	|
+| 1    	| 2    	| A     	|
+| 0.75 	| 3    	| A     	|
+| 2    	| 1    	| A     	|
+| 1.75 	| 1.75 	| A     	|
+| 2.75 	| 0.75 	| A     	|
+| 2.5  	| 1.5  	| A     	|
+| 0.5  	| 6    	| B     	|
+| 1.5  	| 6    	| B     	|
+| 2    	| 5.5  	| B     	| 
+| 1    	| 5.5  	| B     	|
+| 1    	| 6.5  	| B     	|
+| 2    	| 4.5  	| B     	|
+| 1.75 	| 5.25 	| B     	|
+| 2.75 	| 4.25 	| B     	|
+| 2.5  	| 5    	| B     	|</p>
+
+<p>Los datos a utilizar cumplen con los requisitos de SVM. Todos los predictores son numéricos y la variable objetivo es binaria.</p>
+
+<h1 id="modelo">
+<a class="anchor" href="#modelo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modelo</h1>
+
+<p>La implemententación del modelo será en Rapidminer. El primer paso será preparar los datos y cargarlos con un operador Retrieve. Es bastante interesante aprovechar esta oportunidad y visualizar los datos mediantes un gráfico plot.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/SVM-Simple-Plot-RM.png" alt="" title="Gráfico de tipo plot (X2 y X1)"></p>
+
+<blockquote>
+  <p>Con este gráfico se identifica fácilmente la naturaleza de la clasificación a realizar. Ambas clases se encuentran separadas apropiadamente por una “recta imaginaria”.</p>
+
+</blockquote>
+
+<p>Al flujo se debe agregar el operador de <em>Support Vector Machine</em> (SVM) así como también un <em>Apply Model</em>. Este último se nutrirá de ejemplos generados manualmente, los cuales cargaremos en un dataset nuevo.</p>
+
+<p>El flujo debería verse de la siguiente manera:</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/SVM-Simple-Flow.png" alt="" title="Flujo de modelo SVM en Rapidminer"></p>
+
+<h2 id="resultados">
+<a class="anchor" href="#resultados" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resultados</h2>
+
+<p>El nuevo dataset contiene tres ejemplos (X1, X2) para clasificar: <strong>(1.5, 1), (1.5, 4) y (2, 7)</strong>.</p>
+
+<p>Desde un análisis gráfico, los puntos 1 y 3 son fácilmente ubicables en los sectores donde una única clase predomina, sin embargo el punto 2 está en medio de estas zonas, en una frontera donde la predicción se vuelve más compleja.</p>
+
+<p>Por esta razón, la confianza de predicción será más alta para los puntos 1 y 3, mientras que el punto 2 tendrá una confianza más equilibrada entre clases.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/SVM-Simple-Resultados-Clasificaci%C3%B3n.png" alt="" title="Resultados de clasificación de nuevos valores"></p>
+
+<blockquote>
+  <p>En esta imagen se confirman nuestras suposiciones sobre el comportamiento del modelo.</p>
+
+</blockquote>
+
+<p>Adicionalmente, vale la pena revisar los pesos generados por el modelo. Volviendo a la teoría, estos representan los coeficientes de cada predictor para partir de hyperespacio usando hyperplanos.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/SVM-Simple-Weights.png" alt="" title="Coeficientes de predictores generados por SVM"></p>
+
+  </div><a class="u-url" href="/Machine-Learning-Portfolio/svm/rapidminer/2021/11/04/Support-Vector-Machines-Datos-de-prueba-con-Kernel-Lineal.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Machine-Learning-Portfolio/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Machine-Learning-Portfolio/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/Nachlord996" title="Nachlord996"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
