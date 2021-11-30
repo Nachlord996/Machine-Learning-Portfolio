@@ -21,10 +21,11 @@ Para este ejercicio se utilizará un Dataset de ejemplo de coordenadas bidimensi
 El dataset es muy reducido, contiene solamente 17 ejemplos. Por tanto, entrenaremos un modelo de SVM utilizando la totalidad de los datos disponibles. Para testear utilizaremos puntos elegidos estratégicamente que nos permitan valorar su desempeño.
 
 ## Datos
-#
+
 El dataset a utilizar es el siguiente:
+
 | x1   	| x2   	| Clase 	|
-|------	|------	|-------	|
+|-------|-------|-----------|
 | 1.5  	| 2.5  	| A     	|
 | 2    	| 2    	| A     	|
 | 1    	| 2    	| A     	|
