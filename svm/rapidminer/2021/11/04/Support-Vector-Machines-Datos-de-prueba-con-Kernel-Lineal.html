@@ -99,11 +99,8 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#contexto">Contexto</a></li>
 <li class="toc-entry toc-h2"><a href="#datos">Datos</a></li>
-<li class="toc-entry toc-h1"><a href="#modelo">Modelo</a>
-<ul>
+<li class="toc-entry toc-h2"><a href="#modelo">Modelo</a></li>
 <li class="toc-entry toc-h2"><a href="#resultados">Resultados</a></li>
-</ul>
-</li>
 </ul><p>La clasificación binaria es un problema recurrente en el ámbito de los modelos supervisados de Machine Learning. Al existir exclusivamente dos clases, la visualización de los datos (Mayoritariamente en dos dimensiones) otorga la capacidad de decidir enfrentar con el problema con un tipo de algoritmos en particular.</p>
 
 <p>En este artículo se demostrará el uso de un algoritmo reciente para clasificación binaria llamado “Support Vector Machines”. El mismo recoge aspectos de la Estadística, la Teoría Matemática de la Optimización y de las Ciencias de la Computación.</p>
@@ -147,8 +144,8 @@ El dataset a utilizar es el siguiente:
 
 <p>Los datos a utilizar cumplen con los requisitos de SVM. Todos los predictores son numéricos y la variable objetivo es binaria.</p>
 
-<h1 id="modelo">
-<a class="anchor" href="#modelo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modelo</h1>
+<h2 id="modelo">
+<a class="anchor" href="#modelo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modelo</h2>
 
 <p>La implemententación del modelo será en Rapidminer. El primer paso será preparar los datos y cargarlos con un operador Retrieve. Es bastante interesante aprovechar esta oportunidad y visualizar los datos mediantes un gráfico plot.</p>
 
