@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Caso de Estudio: Detección de enfermedad cardíaca | Ignacio Martínez</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Caso de Estudio: Detección de enfermedad cardíaca" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático" />
+<meta property="og:description" content="En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático" />
+<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
+<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
+<meta property="og:site_name" content="Ignacio Martínez" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html","@type":"BlogPosting","headline":"Caso de Estudio: Detección de enfermedad cardíaca","dateModified":"2021-11-25T00:00:00-06:00","datePublished":"2021-11-25T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html"},"description":"En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="Ignacio Martínez" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Machine-Learning-Portfolio/">Ignacio Martínez</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Machine-Learning-Portfolio/about/">About Me</a><a class="page-link" href="/Machine-Learning-Portfolio/search/">Search</a><a class="page-link" href="/Machine-Learning-Portfolio/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Caso de Estudio: Detección de enfermedad cardíaca</h1><p class="page-description"></p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-25T00:00:00-06:00" itemprop="datePublished">
+        Nov 25, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#contexto">Contexto</a></li>
+<li class="toc-entry toc-h2"><a href="#preparación-de-los-datos">Preparación de los Datos</a></li>
+</ul><h2 id="contexto">
+<a class="anchor" href="#contexto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexto</h2>
+
+<p>Me resulta particularmente interesante las posibilidades de aplicación de la Ciencia de Datos en el área de la Medicina. Los Hospitales y centros médicos en general, son instituciones que generan y registran información sobre el estado de sus pacientes diariamente. Por lo que, en principio es un buen campo de investigación para proyectos de esta índole.</p>
+
+<p>La información puede ser aprovechada mediante técnicas de Machine Learning para el entrenamiento de modelos que aporten valor a la labor médica. Sin embargo, la mayoría de las instituciones no estarán dispuestas a compartir dicha información para proteger así la privacidad de sus usuarios. En definitiva, los pacientes depositan su confianza en estos centros médicos y tienen el derecho legítimo de que su información personal no sea filtrada. Este derecho se ve respaldado por la obligación, del otro lado del mostrador, de resguardar esta información. Esto último deriva en que la disponibilidad de información sea mayormente escasa y difícil de conseguir.</p>
+
+<p>En este caso de estudio se pretende analizar información de pacientes para la detección de enfermedades cardíacas. Se parte de Datasets que están disponibles públicamente y han sido objeto de estudio en varios artículos sobre esta temática. Estos datos provienen de 4 bases de datos distintas de:</p>
+
+<ol>
+  <li>Cleveland Clinic Foundation</li>
+  <li>Hungarian Institute of Cardiology, Budapest</li>
+  <li>V.A. Medical Center, Long Beach, CA</li>
+  <li>University Hospital, Zurich, Switzerland</li>
+</ol>
+
+<p>El objetivo principal es demostrar las habilidades aprendidas considerando todas las etapas de un proyecto de Machine Learning.</p>
+
+<h2 id="preparación-de-los-datos">
+<a class="anchor" href="#preparaci%C3%B3n-de-los-datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparación de los Datos</h2>
+
+<p>A pesar de que los Datasets tienen orígenes distintos, los atributos que los componen se mantienen en todos los Datasets. Por lo tanto, podemos afirmar que una posible unificación de los datos será correcta y beneficiosa para el estudio, ya que contaremos con mayor cantidad de ejemplos y todos tienen la misma estructura. Esto implica también, que los datos registrados estén en las <em>mismas unidades</em> y <em>encodeados</em> de la misma manera. Diversos tipos de datos pueden tener el mismo significado pero tener distinta representación. Durante la preparación de los datos, debemos prestar especial atención a este aspecto ya que es uno de los errores más frecuentes y es fácil pasar por alto.</p>
+
+<p>Como primera aproximación, deberemos investigar la estructura de los archivos, para luego poder levantarlos correctamente en la herramienta escogida.</p>
+
+<blockquote>
+  <p>Cada uno de los extractos de las bases de datos estan en archivos individuales <strong>.DATA</strong>. Existe además un archivo <strong>.NAMES</strong> que detalla la información presente en los anteriormente mencionados.</p>
+
+</blockquote>
+
+<p><img src="/Machine-Learning-Portfolio/images/Validacion-preparacion-de-datos.png" alt="" title="Contenido del archivo Cleveland.data"></p>
+
+<p>La estructura de los datos no parece ser la más conveniente para su lectura, por lo que surge la necesidad de realizar transformaciones de formato. Para ello, realizaremos un script que convierta cada Dataset a un archivo <strong>.csv</strong> independiente.</p>
+
+<p>Analizando la estructura de este archivo encuentro un patrón, cada cierta cantidad de líneas (En principio 10) hay una que finaliza la palabra “<em>name</em>”. De acuerdo con el archivo “<em>.Names</em>” asociado a estos Datasets, esta variable representa el último atributo del Dataset, por lo que podría ser utilizado para delimitar registros. En el caso de todos los valores intermedios, cada uno está asociado a un predictor según el orden descripto en el archivo “<em>.Names</em>”.</p>
+
+<p>Vale destacar también, que el <strong>primer valor</strong> de cada registro se ve incrementando secuencialmente y es distinto para cada uno de los grupos, por lo que coincide con la descripción de <strong>Identificador</strong> que se esperaba. Los identificadores son un tipo de datos que no debe ser incluido en el proceso de entrenamiento de un modelo. El mismo no aporta información relevante para el problema que se está analizando. La utilidad que aporta este dato es exclusivamente referencial, para que el lector pueda identificar registros en particular.</p>
+
+<p>El script fue escrito en Javascript y ejecutado en un entorno local de NodeJS. A continuación se presenta el código utilizado para estandarizar la información en un formato legible y universal CSV. El script fue ejecutado para cada uno de los archivos del caso de estudio.
+Simplemente se leen los archivos en busca de la palabra clave “<em>name</em>”, mientras que se van acumulando los valores obtenidos hasta el momento. Al encontrar esta palabra, se verifica la integridad del registro encontrado para decidir si será considerado o no. 
+Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Script-Limpieza-de-Datos.png" alt="" title="Script en JS para formateo y curación de datos"></p>
+
+<p>Vale destacar que algunos ejemplos fueron retirados del Dataset final. Esto se debe a que contenían caracteres inválidos para los predictores que se están manejando o la cantidad de datos superaba lo necesario por cada ejemplo. Esta técnica supone una decisión sobre los datos, la cual debe ser tomada con precaución. En este caso, los ejemplos con problemas de encoding en el archivo fueron omitidos porque suponían un porcentaje muy bajo de la muestra.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>Ejemplos totales</th>
+      <th>Ejemplos con errores</th>
+      <th>Porcentaje de error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cleveland</td>
+      <td>290</td>
+      <td>8</td>
+      <td>2.75%</td>
+    </tr>
+    <tr>
+      <td>Switzerland</td>
+      <td>123</td>
+      <td>0</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <td>Hungarian</td>
+      <td>294</td>
+      <td>0</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <td>Long Beach VA</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ahora tenemos la información correctamente almacenada en 4 archivos CSV distintos. La siguiente imagen muestra el resultado de la ejecución del script para el dataset <em>“Cleveland”</em>. También es de utilidad incluir los encabezados de los datos. Los mismos están disponibles en el archivo <strong>.Names</strong>.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Clevland-Data-Parsed.png" alt="" title="Resultado del archivo Cleveland"></p>
+
+<p>Para cargar el Dataset en Rapidminer, se agregarán las 4 fuentes de datos como archivos al repositorio local. Luego se recuperan en el flujo mediante el operador <em>Retrieve</em>. La idea es combinar estos datasets en un único dataset y analizar estadísticas sobre él. Esto se puede realizar aplicando el operador <em>Join</em>.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Combinacion-Datasets.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
+
+<p>Lo primero que se puede apreciar es la gran cantidad de predictores, se dispone de un total de 76. Dentro de la etapa de prepración de los datos también es relevante reducir la cantidad de predictores a utilizar en el modelo. Esto supone un beneficio desde el punto de vista computacional, ya que se deberá trabajar con datos dimensionalmente más simples y por lo tanto con menos requerimientos de memoria y cómputo. Por otra parte, algunos de estos predictores podrían estar correlacionados entre sí, lo cual influye sustancialmente en la estabilidad de algunos modelos. Además de un beneficio, la cantidad de atributos puede ser una restricción para ciertos modelos como K-NN ya que por cada predictor que se agrega, el tiempo de ejecución total aumenta exponencialmente.</p>
+
+<p>Por otra parte, múltiples predictores contienen una gran cantidad de valores faltantes. Existen diversas técnicas para combatir los valores faltantes de un dataset, conformando lo que se conoce como imputación de valores. En este caso, usaremos el criterio de valores de faltantes en relación al total de ejemplos para reducir los predictores a utilizar. Esto se debe a que será muy difícil obtener imputaciones semejantes a la realidad cuando los valores faltantes predominan para ese predictor.</p>
+
+<p>La decisión es eliminar aquellos predictores que tengan 10% o más de valores faltantes. Para este caso, si el predictor tiene 90 o más ejemplos con valores faltantes, será eliminado del Dataset. Analizando este criterio, los predictores a eliminar son estos:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Predictor</th>
+      <th># Valores Faltantes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fbs</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>met</td>
+      <td>105</td>
+    </tr>
+    <tr>
+      <td>proto</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <td>eldv5e</td>
+      <td>142</td>
+    </tr>
+    <tr>
+      <td>ramus</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <td>laddist</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <td>rcadist</td>
+      <td>245</td>
+    </tr>
+    <tr>
+      <td>diag</td>
+      <td>246</td>
+    </tr>
+    <tr>
+      <td>lvx1</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <td>om2</td>
+      <td>271</td>
+    </tr>
+    <tr>
+      <td>ladprox</td>
+      <td>275</td>
+    </tr>
+    <tr>
+      <td>painexer</td>
+      <td>282</td>
+    </tr>
+    <tr>
+      <td>painloc</td>
+      <td>286</td>
+    </tr>
+    <tr>
+      <td>relrest</td>
+      <td>308</td>
+    </tr>
+    <tr>
+      <td>slope</td>
+      <td>420</td>
+    </tr>
+    <tr>
+      <td>cigs</td>
+      <td>422</td>
+    </tr>
+    <tr>
+      <td>famhist</td>
+      <td>425</td>
+    </tr>
+    <tr>
+      <td>rldv5</td>
+      <td>432</td>
+    </tr>
+    <tr>
+      <td>years</td>
+      <td>453</td>
+    </tr>
+    <tr>
+      <td>thaltime</td>
+      <td>477</td>
+    </tr>
+    <tr>
+      <td>thalsev</td>
+      <td>558</td>
+    </tr>
+    <tr>
+      <td>cxmain</td>
+      <td>567</td>
+    </tr>
+    <tr>
+      <td>om1</td>
+      <td>572</td>
+    </tr>
+    <tr>
+      <td>rcaprox</td>
+      <td>588</td>
+    </tr>
+    <tr>
+      <td>junkca</td>
+      <td>608</td>
+    </tr>
+    <tr>
+      <td>smoke</td>
+      <td>669</td>
+    </tr>
+    <tr>
+      <td>thalpul</td>
+      <td>769</td>
+    </tr>
+    <tr>
+      <td>dm</td>
+      <td>804</td>
+    </tr>
+    <tr>
+      <td>earlobe</td>
+      <td>855</td>
+    </tr>
+    <tr>
+      <td>restwm</td>
+      <td>869</td>
+    </tr>
+    <tr>
+      <td>restef</td>
+      <td>871</td>
+    </tr>
+    <tr>
+      <td>thal</td>
+      <td>894</td>
+    </tr>
+    <tr>
+      <td>exerwm</td>
+      <td>897</td>
+    </tr>
+    <tr>
+      <td>cmo</td>
+      <td>898</td>
+    </tr>
+    <tr>
+      <td>exerckm</td>
+      <td>898</td>
+    </tr>
+    <tr>
+      <td>restckm</td>
+      <td>899</td>
+    </tr>
+    <tr>
+      <td>pncaden</td>
+      <td>899</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Para este caso, se ha decidido no utilizar técnicas de Feature Selection avanzadas como Análisis de Componentes Lineales. Por el contrario, primero se seleccionarán los predictores cuya correlación con la variable objetivo sea alta. Para ello, se definirá un coeficiente de umbral para evaluar si un predictor será utilizado, a partir de su valor de correlación.</p>
+
+
+  </div><a class="u-url" href="/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Machine-Learning-Portfolio/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Machine-Learning-Portfolio/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/Nachlord996" title="Nachlord996"><svg class="svg-icon grey"><use xlink:href="/Machine-Learning-Portfolio/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
