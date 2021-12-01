@@ -31,7 +31,7 @@ La variables objetivo es del tipo Polinomial y tiene __3 valores__ posibles: Iri
 
 Examinando los gráficos de tipo plot entre los predictores, resulta interesante la agrupación generada en el espacio de las clases para las variables __"Largo Pétalo"__ y __"Ancho Pétalo"__. Además, estos dos predictores son los que tienen mayor correlación con la variable objetivo.
 
-![]({{ site.baseurl }}/images/KNN-Iris-Plot-Datos.png "Plot de Largo Pétalo y Ancho Pétalo")
+![]({{ site.baseurl }}/images/KNN3.png "Plot de Largo Pétalo y Ancho Pétalo")
 
 ## Modelo
 
@@ -41,14 +41,14 @@ Agregamos el operador de K-NN con la configuración que viene por defecto, segui
 
 El flujo debería verse así:
 
-![]({{ site.baseurl }}/images/KNN-Iris-Flujo.png "Flujo de Rapidminer para apicar K-NN al Dataset Iris")
+![]({{ site.baseurl }}/images/KNN1.png "Flujo de Rapidminer para apicar K-NN al Dataset Iris")
 
 ## Evaluación
 
 Al ejecutar el modelo, vemos que los resultados obtenidos son muy positivos. Esto quiere decir que nuestro modelo aprovechó bien la correlación entre predictores y la separación en el hyperespacio de las clases objetivo.
 
 Aquí la matriz de confusión para esta ejecución inicial:
-![]({{ site.baseurl }}/images/KNN-Iris-Matriz-Confusión.png "Matriz de confusión")
+![]({{ site.baseurl }}/images/KNN2.png "Matriz de confusión")
 
 Vale destacar que el operador de K-NN ofrece distintos métodos para el cálculo de la distincia, los cuales podrían ser interesantes para otras situaciones donde la separación no sea tan clara o el resultado obtenido no sea tan bueno.
 
