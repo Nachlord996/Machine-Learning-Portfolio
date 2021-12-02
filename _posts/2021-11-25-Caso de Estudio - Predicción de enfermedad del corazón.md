@@ -10,6 +10,8 @@ sticky_rank: 1
 
 Me resulta particularmente interesante las posibilidades de aplicación de la Ciencia de Datos en el área de la Medicina. Los Hospitales y centros médicos en general, son instituciones que generan y registran información sobre el estado de sus pacientes diariamente. Por lo que, en principio es un buen campo de investigación para proyectos de esta índole.
 
+![]({{ site.baseurl }}/images/Clinic.jpg "")
+
 La información puede ser aprovechada mediante técnicas de Machine Learning para el entrenamiento de modelos que aporten valor a la labor médica. Sin embargo, la mayoría de las instituciones no estarán dispuestas a compartir dicha información para proteger así la privacidad de sus usuarios. En definitiva, los pacientes depositan su confianza en estos centros médicos y tienen el derecho legítimo de que su información personal no sea filtrada. Este derecho se ve respaldado por la obligación, del otro lado del mostrador, de resguardar esta información. Esto último deriva en que la disponibilidad de información sea mayormente escasa y difícil de conseguir.
 
 En este caso de estudio se pretende analizar información de pacientes para la detección de enfermedades cardíacas. Se parte de Datasets que están disponibles públicamente y han sido objeto de estudio en varios artículos sobre esta temática. Estos datos provienen de 4 bases de datos distintas de:
