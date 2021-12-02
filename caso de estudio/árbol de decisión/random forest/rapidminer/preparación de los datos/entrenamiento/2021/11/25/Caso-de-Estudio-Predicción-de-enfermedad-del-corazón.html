@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático" />
 <meta property="og:description" content="En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático" />
-<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
-<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
+<link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/caso%20de%20estudio/%C3%A1rbol%20de%20decisi%C3%B3n/random%20forest/rapidminer/preparaci%C3%B3n%20de%20los%20datos/entrenamiento/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
+<meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/caso%20de%20estudio/%C3%A1rbol%20de%20decisi%C3%B3n/random%20forest/rapidminer/preparaci%C3%B3n%20de%20los%20datos/entrenamiento/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" />
 <meta property="og:site_name" content="Ignacio Martínez" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-11-25T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html","@type":"BlogPosting","headline":"Caso de Estudio: Detección de enfermedad cardíaca","dateModified":"2021-11-25T00:00:00-06:00","datePublished":"2021-11-25T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html"},"description":"En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático","@context":"https://schema.org"}</script>
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/caso%20de%20estudio/%C3%A1rbol%20de%20decisi%C3%B3n/random%20forest/rapidminer/preparaci%C3%B3n%20de%20los%20datos/entrenamiento/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html","@type":"BlogPosting","headline":"Caso de Estudio: Detección de enfermedad cardíaca","dateModified":"2021-11-25T00:00:00-06:00","datePublished":"2021-11-25T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/caso%20de%20estudio/%C3%A1rbol%20de%20decisi%C3%B3n/random%20forest/rapidminer/preparaci%C3%B3n%20de%20los%20datos/entrenamiento/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html"},"description":"En este portafolio están todos mis proyectos relacionados con Métodos de Aprendizaje Automático","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="Ignacio Martínez" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -82,13 +82,46 @@ window.onload = wrap_img;
 </span></p>
 
     
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Caso de estudio">Caso de estudio</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Árbol de decisión">Árbol de decisión</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Random Forest">Random Forest</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Rapidminer">Rapidminer</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Preparación de los datos">Preparación de los datos</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Machine-Learning-Portfolio/categories/#Entrenamiento">Entrenamiento</a>
+        
+      
+      </p>
+    
 
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#contexto">Contexto</a></li>
-<li class="toc-entry toc-h2"><a href="#preparación-de-los-datos">Preparación de los Datos</a></li>
+<li class="toc-entry toc-h2"><a href="#contexto-del-problema">Contexto del problema</a></li>
+<li class="toc-entry toc-h2"><a href="#preparación-de-los-datos">Preparación de los Datos</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#primera-aproximación">Primera aproximación</a></li>
+<li class="toc-entry toc-h3"><a href="#reestructuración-de-archivos-de-datos">Reestructuración de archivos de datos</a></li>
+<li class="toc-entry toc-h3"><a href="#unificación-de-fuentes-de-datos">Unificación de fuentes de datos</a></li>
+<li class="toc-entry toc-h3"><a href="#análisis-de-valores-faltantes">Análisis de valores faltantes</a></li>
+<li class="toc-entry toc-h3"><a href="#imputación-de-valores">Imputación de valores</a></li>
+<li class="toc-entry toc-h3"><a href="#detección-de-outliers">Detección de outliers</a></li>
+<li class="toc-entry toc-h3"><a href="#feature-selection">Feature selection</a></li>
+<li class="toc-entry toc-h3"><a href="#transformaciones-sobre-los-datos">Transformaciones sobre los datos</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#modelo">Modelo</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#elección-del-modelo">Elección del modelo</a></li>
@@ -97,8 +130,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#comparación-con-random-forest">Comparación con Random Forest</a></li>
 </ul>
 </li>
-</ul><h2 id="contexto">
-<a class="anchor" href="#contexto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexto</h2>
+</ul><h2 id="contexto-del-problema">
+<a class="anchor" href="#contexto-del-problema" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexto del problema</h2>
 
 <p>Me resulta particularmente interesante las posibilidades de aplicación de la Ciencia de Datos en el área de la Medicina. Los Hospitales y centros médicos en general, son instituciones que generan y registran información sobre el estado de sus pacientes diariamente. Por lo que, en principio es un buen campo de investigación para proyectos de esta índole.</p>
 
@@ -118,6 +151,9 @@ window.onload = wrap_img;
 <h2 id="preparación-de-los-datos">
 <a class="anchor" href="#preparaci%C3%B3n-de-los-datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preparación de los Datos</h2>
 
+<h3 id="primera-aproximación">
+<a class="anchor" href="#primera-aproximaci%C3%B3n" aria-hidden="true"><span class="octicon octicon-link"></span></a>Primera aproximación</h3>
+
 <p>A pesar de que los Datasets tienen orígenes distintos, los atributos que los componen se mantienen en todos los Datasets. Por lo tanto, podemos afirmar que una posible unificación de los datos será correcta y beneficiosa para el estudio, ya que contaremos con mayor cantidad de ejemplos y todos tienen la misma estructura. Esto implica también, que los datos registrados estén en las <em>mismas unidades</em> y <em>encodeados</em> de la misma manera. Diversos tipos de datos pueden tener el mismo significado pero tener distinta representación. Durante la preparación de los datos, debemos prestar especial atención a este aspecto ya que es uno de los errores más frecuentes y es fácil pasar por alto.</p>
 
 <p>Como primera aproximación, deberemos investigar la estructura de los archivos, para luego poder levantarlos correctamente en la herramienta escogida.</p>
@@ -130,6 +166,9 @@ window.onload = wrap_img;
 <p><img src="/Machine-Learning-Portfolio/images/Validacion-preparacion-de-datos.png" alt="" title="Contenido del archivo Cleveland.data"></p>
 
 <p>La estructura de los datos no parece ser la más conveniente para su lectura, por lo que surge la necesidad de realizar transformaciones de formato. Para ello, realizaremos un script que convierta cada Dataset a un archivo <strong>.csv</strong> independiente.</p>
+
+<h3 id="reestructuración-de-archivos-de-datos">
+<a class="anchor" href="#reestructuraci%C3%B3n-de-archivos-de-datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reestructuración de archivos de datos</h3>
 
 <p>Analizando la estructura de este archivo encuentro un patrón, cada cierta cantidad de líneas (En principio 10) hay una que finaliza la palabra “<em>name</em>”. De acuerdo con el archivo “<em>.Names</em>” asociado a estos Datasets, esta variable representa el último atributo del Dataset, por lo que podría ser utilizado para delimitar registros. En el caso de todos los valores intermedios, cada uno está asociado a un predictor según el orden descripto en el archivo “<em>.Names</em>”.</p>
 
@@ -184,11 +223,17 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
 
 <p><img src="/Machine-Learning-Portfolio/images/Clevland-Data-Parsed.png" alt="" title="Resultado del archivo Cleveland"></p>
 
+<h3 id="unificación-de-fuentes-de-datos">
+<a class="anchor" href="#unificaci%C3%B3n-de-fuentes-de-datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unificación de fuentes de datos</h3>
+
 <p>Para cargar el Dataset en Rapidminer, se agregarán las 4 fuentes de datos como archivos al repositorio local. Luego se recuperan en el flujo mediante el operador <em>Retrieve</em>. La idea es combinar estos datasets en un único dataset y analizar estadísticas sobre él. Esto se puede realizar aplicando el operador <em>Join</em>.</p>
 
 <p><img src="/Machine-Learning-Portfolio/images/Combinacion-Dataset.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
 
 <p>Lo primero que se puede apreciar es la gran cantidad de predictores, se dispone de un total de 76. Dentro de la etapa de prepración de los datos también es relevante reducir la cantidad de predictores a utilizar en el modelo. Esto supone un beneficio desde el punto de vista computacional, ya que se deberá trabajar con datos dimensionalmente más simples y por lo tanto con menos requerimientos de memoria y cómputo. Por otra parte, algunos de estos predictores podrían estar correlacionados entre sí, lo cual influye sustancialmente en la estabilidad de algunos modelos. Además de un beneficio, la cantidad de atributos puede ser una restricción para ciertos modelos como K-NN ya que por cada predictor que se agrega, el tiempo de ejecución total aumenta exponencialmente.</p>
+
+<h3 id="análisis-de-valores-faltantes">
+<a class="anchor" href="#an%C3%A1lisis-de-valores-faltantes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Análisis de valores faltantes</h3>
 
 <p>Por otra parte, múltiples predictores contienen una gran cantidad de valores faltantes. Existen diversas técnicas para combatir los valores faltantes de un dataset, conformando lo que se conoce como imputación de valores. En este caso, usaremos el criterio de valores de faltantes en relación al total de ejemplos para reducir los predictores a utilizar. Esto se debe a que será muy difícil obtener imputaciones semejantes a la realidad cuando los valores faltantes predominan para ese predictor.</p>
 
@@ -311,8 +356,13 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
 
 <p><img src="/Machine-Learning-Portfolio/images/Combinacion-Datasets-start.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
 
+<h3 id="imputación-de-valores">
+<a class="anchor" href="#imputaci%C3%B3n-de-valores" aria-hidden="true"><span class="octicon octicon-link"></span></a>Imputación de valores</h3>
+
 <p>Con respecto a los restantes valores faltantes, aplicaremos una imputación clásica utilizando utilizando K-NN. Este algoritmo basado en distancias, reemplazará los valores que falten recopilando información de ejemplos similares. Vale destacar que el funcionamiento de K-NN parte de la base de que los tipos de datos van a estar bien asignados. En este paso revisamos uno a uno los atributos para asegurarnos de que están bien cargados.</p>
 
+<h3 id="detección-de-outliers">
+<a class="anchor" href="#detecci%C3%B3n-de-outliers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detección de outliers</h3>
 <p>También es importante analizar la distribución de valores para detectar posibles outliers. El primer paso en este análisis es constatar errores de medición o registro de información. Esto se da en el atributo “<em>Prop</em>”, donde debería existir una variable Binomial, se encuentra un ejemplo que tiene un valor de <em>22</em> para este predictor. Esto claremente se trata de outlier que no aporta información relevante al problema y solamente genera ruido. También sucede para la variable numérica “<em>Lmt</em>”. Existe un valor de 162 que se encuentra muy alejado del resto de la distribución.</p>
 
 <p>En los siguientes gráficos, en escala logarítmica, se puede apreciar que solamente existe un registro con este valor outlier frente al resto de la distribución.</p>
@@ -401,6 +451,9 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
   </tbody>
 </table>
 
+<h3 id="feature-selection">
+<a class="anchor" href="#feature-selection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature selection</h3>
+
 <p>Para este caso, se ha decidido no utilizar técnicas de Feature Selection avanzadas como Análisis de Componentes Lineales. Por el contrario, se seleccionarán los predictores cuya correlación con la variable objetivo sea alta. Para ello, se definirá un coeficiente de umbral para evaluar si un predictor será utilizado, a partir de su valor de correlación. Es importante entender que este filtro servirá exclusivamente para predictores numéricos. El resto de los atributos permanecerán en el Dataset.</p>
 
 <p>La correlación con la variable de salida puede verse por medio de la matriz de correlación. Tomando una correlación de por lo menos 0.14, es decir mayor a 0.14 y menos a -0.14, el conjunto de predictores que cumplen esta condición es este:</p>
@@ -427,6 +480,9 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
 </ul>
 
 <p>Ahora que tenemos el conjunto final de predictores a utilizar, es pertinente evaluar las distintas distribuciones que puedan tener. Este dato es importante especialmente para ciertos algoritmos que tienen un mejor rendimiento con distribuciones gaussianas. También es una oportunidad para evaluar la proporción de clases de la variable objetivo.</p>
+
+<h3 id="transformaciones-sobre-los-datos">
+<a class="anchor" href="#transformaciones-sobre-los-datos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transformaciones sobre los datos</h3>
 
 <p><img src="/Machine-Learning-Portfolio/images/Caso-de-estudio-Proporcion-de-clase.png" alt="" title="Representación de clases de la variable objetivo"></p>
 
@@ -504,7 +560,7 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
 <p>También vemos incrementada la precisión del modelo en general, ahora tenemos un 81.04%.</p>
 
 
-  </div><a class="u-url" href="/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" hidden></a>
+  </div><a class="u-url" href="/Machine-Learning-Portfolio/caso%20de%20estudio/%C3%A1rbol%20de%20decisi%C3%B3n/random%20forest/rapidminer/preparaci%C3%B3n%20de%20los%20datos/entrenamiento/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" hidden></a>
 </article>
 
       </div>
