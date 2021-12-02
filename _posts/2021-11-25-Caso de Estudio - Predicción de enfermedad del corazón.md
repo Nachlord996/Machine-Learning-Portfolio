@@ -2,11 +2,11 @@
 toc: true
 layout: post
 description: ""
-categories: []
+categories: ["Caso de estudio", "Árbol de decisión", "Random Forest", "Rapidminer", "Preparación de los datos", "Entrenamiento"]
 title: "Caso de Estudio: Detección de enfermedad cardíaca"
 sticky_rank: 1
 ---
-## Contexto
+## Contexto del problema
 
 Me resulta particularmente interesante las posibilidades de aplicación de la Ciencia de Datos en el área de la Medicina. Los Hospitales y centros médicos en general, son instituciones que generan y registran información sobre el estado de sus pacientes diariamente. Por lo que, en principio es un buen campo de investigación para proyectos de esta índole.
 
@@ -23,6 +23,8 @@ El objetivo principal es demostrar las habilidades aprendidas considerando todas
 
 ## Preparación de los Datos
 
+### Primera aproximación
+
 A pesar de que los Datasets tienen orígenes distintos, los atributos que los componen se mantienen en todos los Datasets. Por lo tanto, podemos afirmar que una posible unificación de los datos será correcta y beneficiosa para el estudio, ya que contaremos con mayor cantidad de ejemplos y todos tienen la misma estructura. Esto implica también, que los datos registrados estén en las _mismas unidades_ y _encodeados_ de la misma manera. Diversos tipos de datos pueden tener el mismo significado pero tener distinta representación. Durante la preparación de los datos, debemos prestar especial atención a este aspecto ya que es uno de los errores más frecuentes y es fácil pasar por alto.
 
 Como primera aproximación, deberemos investigar la estructura de los archivos, para luego poder levantarlos correctamente en la herramienta escogida.
@@ -33,6 +35,8 @@ Como primera aproximación, deberemos investigar la estructura de los archivos, 
 ![]({{ site.baseurl }}/images/Validacion-preparacion-de-datos.png "Contenido del archivo Cleveland.data")
 
 La estructura de los datos no parece ser la más conveniente para su lectura, por lo que surge la necesidad de realizar transformaciones de formato. Para ello, realizaremos un script que convierta cada Dataset a un archivo __.csv__ independiente.
+
+### Reestructuración de archivos de datos
 
 Analizando la estructura de este archivo encuentro un patrón, cada cierta cantidad de líneas (En principio 10) hay una que finaliza la palabra "_name_". De acuerdo con el archivo "_.Names_" asociado a estos Datasets, esta variable representa el último atributo del Dataset, por lo que podría ser utilizado para delimitar registros. En el caso de todos los valores intermedios, cada uno está asociado a un predictor según el orden descripto en el archivo "_.Names_".
 
@@ -57,11 +61,15 @@ Ahora tenemos la información correctamente almacenada en 4 archivos CSV distint
 
 ![]({{ site.baseurl }}/images/Clevland-Data-Parsed.png "Resultado del archivo Cleveland")
 
+### Unificación de fuentes de datos 
+
 Para cargar el Dataset en Rapidminer, se agregarán las 4 fuentes de datos como archivos al repositorio local. Luego se recuperan en el flujo mediante el operador _Retrieve_. La idea es combinar estos datasets en un único dataset y analizar estadísticas sobre él. Esto se puede realizar aplicando el operador _Join_.
 
 ![]({{ site.baseurl }}/images/Combinacion-Dataset.png "Carga inicial de datos en Rapidminer")
 
 Lo primero que se puede apreciar es la gran cantidad de predictores, se dispone de un total de 76. Dentro de la etapa de prepración de los datos también es relevante reducir la cantidad de predictores a utilizar en el modelo. Esto supone un beneficio desde el punto de vista computacional, ya que se deberá trabajar con datos dimensionalmente más simples y por lo tanto con menos requerimientos de memoria y cómputo. Por otra parte, algunos de estos predictores podrían estar correlacionados entre sí, lo cual influye sustancialmente en la estabilidad de algunos modelos. Además de un beneficio, la cantidad de atributos puede ser una restricción para ciertos modelos como K-NN ya que por cada predictor que se agrega, el tiempo de ejecución total aumenta exponencialmente. 
+
+### Análisis de valores faltantes
 
 Por otra parte, múltiples predictores contienen una gran cantidad de valores faltantes. Existen diversas técnicas para combatir los valores faltantes de un dataset, conformando lo que se conoce como imputación de valores. En este caso, usaremos el criterio de valores de faltantes en relación al total de ejemplos para reducir los predictores a utilizar. Esto se debe a que será muy difícil obtener imputaciones semejantes a la realidad cuando los valores faltantes predominan para ese predictor.
 
@@ -101,8 +109,11 @@ El flujo hasta este punto se ve de esta manera:
 
 ![]({{ site.baseurl }}/images/Combinacion-Datasets-start.png "Carga inicial de datos en Rapidminer")
 
+### Imputación de valores
+
 Con respecto a los restantes valores faltantes, aplicaremos una imputación clásica utilizando utilizando K-NN. Este algoritmo basado en distancias, reemplazará los valores que falten recopilando información de ejemplos similares. Vale destacar que el funcionamiento de K-NN parte de la base de que los tipos de datos van a estar bien asignados. En este paso revisamos uno a uno los atributos para asegurarnos de que están bien cargados.
 
+### Detección de outliers
 También es importante analizar la distribución de valores para detectar posibles outliers. El primer paso en este análisis es constatar errores de medición o registro de información. Esto se da en el atributo "_Prop_", donde debería existir una variable Binomial, se encuentra un ejemplo que tiene un valor de _22_ para este predictor. Esto claremente se trata de outlier que no aporta información relevante al problema y solamente genera ruido. También sucede para la variable numérica "_Lmt_". Existe un valor de 162 que se encuentra muy alejado del resto de la distribución.
 
 En los siguientes gráficos, en escala logarítmica, se puede apreciar que solamente existe un registro con este valor outlier frente al resto de la distribución.
@@ -137,6 +148,8 @@ Los siguientes predictores tuvieron que ser ajustados en términos del tipo de d
 | restcg       	| Nominal           	|
 | cp        	| Nominal           	|
 
+### Feature selection
+
 Para este caso, se ha decidido no utilizar técnicas de Feature Selection avanzadas como Análisis de Componentes Lineales. Por el contrario, se seleccionarán los predictores cuya correlación con la variable objetivo sea alta. Para ello, se definirá un coeficiente de umbral para evaluar si un predictor será utilizado, a partir de su valor de correlación. Es importante entender que este filtro servirá exclusivamente para predictores numéricos. El resto de los atributos permanecerán en el Dataset.
 
 La correlación con la variable de salida puede verse por medio de la matriz de correlación. Tomando una correlación de por lo menos 0.14, es decir mayor a 0.14 y menos a -0.14, el conjunto de predictores que cumplen esta condición es este:
@@ -162,6 +175,8 @@ La correlación con la variable de salida puede verse por medio de la matriz de 
 
 
 Ahora que tenemos el conjunto final de predictores a utilizar, es pertinente evaluar las distintas distribuciones que puedan tener. Este dato es importante especialmente para ciertos algoritmos que tienen un mejor rendimiento con distribuciones gaussianas. También es una oportunidad para evaluar la proporción de clases de la variable objetivo.
+
+### Transformaciones sobre los datos
 
 ![]({{ site.baseurl }}/images/Caso-de-estudio-Proporcion-de-clase.png "Representación de clases de la variable objetivo")
 
