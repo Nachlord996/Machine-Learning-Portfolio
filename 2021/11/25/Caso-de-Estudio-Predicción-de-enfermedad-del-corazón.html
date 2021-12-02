@@ -77,7 +77,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      16 min read
     
 </span></p>
 
@@ -89,6 +89,14 @@ window.onload = wrap_img;
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#contexto">Contexto</a></li>
 <li class="toc-entry toc-h2"><a href="#preparación-de-los-datos">Preparación de los Datos</a></li>
+<li class="toc-entry toc-h2"><a href="#modelo">Modelo</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#elección-del-modelo">Elección del modelo</a></li>
+<li class="toc-entry toc-h3"><a href="#separación-de-datos-para-entrenamiento-y-test">Separación de datos para Entrenamiento y Test</a></li>
+<li class="toc-entry toc-h3"><a href="#evaluación-del-árbol-de-decisión">Evaluación del Árbol de Decisión</a></li>
+<li class="toc-entry toc-h3"><a href="#comparación-con-random-forest">Comparación con Random Forest</a></li>
+</ul>
+</li>
 </ul><h2 id="contexto">
 <a class="anchor" href="#contexto" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contexto</h2>
 
@@ -178,13 +186,13 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
 
 <p>Para cargar el Dataset en Rapidminer, se agregarán las 4 fuentes de datos como archivos al repositorio local. Luego se recuperan en el flujo mediante el operador <em>Retrieve</em>. La idea es combinar estos datasets en un único dataset y analizar estadísticas sobre él. Esto se puede realizar aplicando el operador <em>Join</em>.</p>
 
-<p><img src="/Machine-Learning-Portfolio/images/Combinacion-Datasets.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
+<p><img src="/Machine-Learning-Portfolio/images/Combinacion-Dataset.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
 
 <p>Lo primero que se puede apreciar es la gran cantidad de predictores, se dispone de un total de 76. Dentro de la etapa de prepración de los datos también es relevante reducir la cantidad de predictores a utilizar en el modelo. Esto supone un beneficio desde el punto de vista computacional, ya que se deberá trabajar con datos dimensionalmente más simples y por lo tanto con menos requerimientos de memoria y cómputo. Por otra parte, algunos de estos predictores podrían estar correlacionados entre sí, lo cual influye sustancialmente en la estabilidad de algunos modelos. Además de un beneficio, la cantidad de atributos puede ser una restricción para ciertos modelos como K-NN ya que por cada predictor que se agrega, el tiempo de ejecución total aumenta exponencialmente.</p>
 
 <p>Por otra parte, múltiples predictores contienen una gran cantidad de valores faltantes. Existen diversas técnicas para combatir los valores faltantes de un dataset, conformando lo que se conoce como imputación de valores. En este caso, usaremos el criterio de valores de faltantes en relación al total de ejemplos para reducir los predictores a utilizar. Esto se debe a que será muy difícil obtener imputaciones semejantes a la realidad cuando los valores faltantes predominan para ese predictor.</p>
 
-<p>La decisión es eliminar aquellos predictores que tengan 10% o más de valores faltantes. Para este caso, si el predictor tiene 90 o más ejemplos con valores faltantes, será eliminado del Dataset. Analizando este criterio, los predictores a eliminar son estos:</p>
+<p>La decisión es eliminar aquellos predictores que tengan 33% o más de valores faltantes. Para este caso, si el predictor tiene 300 o más ejemplos con valores faltantes, será directamente eliminado del Dataset. Analizando este criterio, los predictores a eliminar son estos:</p>
 
 <table>
   <thead>
@@ -195,103 +203,51 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
   </thead>
   <tbody>
     <tr>
-      <td>fbs</td>
-      <td>90</td>
-    </tr>
-    <tr>
-      <td>met</td>
-      <td>105</td>
-    </tr>
-    <tr>
-      <td>proto</td>
-      <td>112</td>
-    </tr>
-    <tr>
-      <td>eldv5e</td>
-      <td>142</td>
-    </tr>
-    <tr>
-      <td>ramus</td>
-      <td>235</td>
-    </tr>
-    <tr>
-      <td>laddist</td>
-      <td>236</td>
-    </tr>
-    <tr>
-      <td>rcadist</td>
-      <td>245</td>
-    </tr>
-    <tr>
-      <td>diag</td>
-      <td>246</td>
-    </tr>
-    <tr>
-      <td>lvx1</td>
-      <td>270</td>
-    </tr>
-    <tr>
-      <td>om2</td>
-      <td>271</td>
-    </tr>
-    <tr>
-      <td>ladprox</td>
-      <td>275</td>
-    </tr>
-    <tr>
-      <td>painexer</td>
-      <td>282</td>
-    </tr>
-    <tr>
-      <td>painloc</td>
-      <td>286</td>
-    </tr>
-    <tr>
-      <td>relrest</td>
+      <td>slope</td>
       <td>308</td>
     </tr>
     <tr>
-      <td>slope</td>
+      <td>cigs</td>
       <td>420</td>
     </tr>
     <tr>
-      <td>cigs</td>
+      <td>famhist</td>
       <td>422</td>
     </tr>
     <tr>
-      <td>famhist</td>
+      <td>rldv5</td>
       <td>425</td>
     </tr>
     <tr>
-      <td>rldv5</td>
+      <td>years</td>
       <td>432</td>
     </tr>
     <tr>
-      <td>years</td>
+      <td>thaltime</td>
       <td>453</td>
     </tr>
     <tr>
-      <td>thaltime</td>
+      <td>thal</td>
       <td>477</td>
     </tr>
     <tr>
-      <td>thalsev</td>
+      <td>diag</td>
       <td>558</td>
     </tr>
     <tr>
-      <td>cxmain</td>
+      <td>ramus</td>
       <td>567</td>
     </tr>
     <tr>
-      <td>om1</td>
+      <td>om2</td>
       <td>572</td>
     </tr>
     <tr>
-      <td>rcaprox</td>
+      <td>cathef</td>
       <td>588</td>
     </tr>
     <tr>
-      <td>junkca</td>
+      <td>ca</td>
       <td>608</td>
     </tr>
     <tr>
@@ -299,16 +255,20 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
       <td>669</td>
     </tr>
     <tr>
-      <td>thalpul</td>
+      <td>thalsev</td>
       <td>769</td>
+    </tr>
+    <tr>
+      <td>junk</td>
+      <td>780</td>
     </tr>
     <tr>
       <td>dm</td>
       <td>804</td>
     </tr>
     <tr>
-      <td>earlobe</td>
-      <td>855</td>
+      <td>thalpul</td>
+      <td>898</td>
     </tr>
     <tr>
       <td>restwm</td>
@@ -319,15 +279,15 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
       <td>871</td>
     </tr>
     <tr>
-      <td>thal</td>
+      <td>exerwm</td>
       <td>894</td>
     </tr>
     <tr>
-      <td>exerwm</td>
+      <td>exeref</td>
       <td>897</td>
     </tr>
     <tr>
-      <td>cmo</td>
+      <td>earlobe</td>
       <td>898</td>
     </tr>
     <tr>
@@ -345,7 +305,203 @@ Por último se escriben las líneas en el archivo <em>.csv</em> de salida.</p>
   </tbody>
 </table>
 
-<p>Para este caso, se ha decidido no utilizar técnicas de Feature Selection avanzadas como Análisis de Componentes Lineales. Por el contrario, primero se seleccionarán los predictores cuya correlación con la variable objetivo sea alta. Para ello, se definirá un coeficiente de umbral para evaluar si un predictor será utilizado, a partir de su valor de correlación.</p>
+<p>Esta operación se puede realizar mediante el operador <em>Select Attributes</em> indicando manualmente los predictores a escoger. Esta decisión nos genera una nueva versión del Dataset con 45 Predictores para trabajar. Realmente serán 44, porque debemos quitar el atributo ID antes de empezar a trabajar. Rapidminer ofrece dos opciones para este tipo de dato, se puede ajustar el rol del predictor a “ID” o se puede directamente eliminar de la tabla. En este caso optaré por eliminarlo ya que no aporta información importante de identificación posterior.</p>
+
+<p>El flujo hasta este punto se ve de esta manera:</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Combinacion-Datasets-start.png" alt="" title="Carga inicial de datos en Rapidminer"></p>
+
+<p>Con respecto a los restantes valores faltantes, aplicaremos una imputación clásica utilizando utilizando K-NN. Este algoritmo basado en distancias, reemplazará los valores que falten recopilando información de ejemplos similares. Vale destacar que el funcionamiento de K-NN parte de la base de que los tipos de datos van a estar bien asignados. En este paso revisamos uno a uno los atributos para asegurarnos de que están bien cargados.</p>
+
+<p>También es importante analizar la distribución de valores para detectar posibles outliers. El primer paso en este análisis es constatar errores de medición o registro de información. Esto se da en el atributo “<em>Prop</em>”, donde debería existir una variable Binomial, se encuentra un ejemplo que tiene un valor de <em>22</em> para este predictor. Esto claremente se trata de outlier que no aporta información relevante al problema y solamente genera ruido. También sucede para la variable numérica “<em>Lmt</em>”. Existe un valor de 162 que se encuentra muy alejado del resto de la distribución.</p>
+
+<p>En los siguientes gráficos, en escala logarítmica, se puede apreciar que solamente existe un registro con este valor outlier frente al resto de la distribución.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-Estudio-Analisis-outlier-1.png" alt="" title="Outlier identificado en predictor Prop"></p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-Estudio-Analisis-outlier-dos.png" alt="" title="Outlier identificado en predictor lmt"></p>
+
+<blockquote>
+  <p>Para este último caso fue necesario variar la cantidad de bins generadas por el histograma para visualizar el outlier.</p>
+
+</blockquote>
+
+<p>Estos ejemplos con outliers serán eliminados del Dataset</p>
+
+<p>Los siguientes predictores tuvieron que ser ajustados en términos del tipo de dato:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Predictor</th>
+      <th>Tipo de dato nuevo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dig</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>diuretic</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>exang</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>painloc</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>painexer</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>relrest</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>prop</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>nitr</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>htn</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>xhypo</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>pro</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>sex</td>
+      <td>Binomial</td>
+    </tr>
+    <tr>
+      <td>num</td>
+      <td>Nominal</td>
+    </tr>
+    <tr>
+      <td>restcg</td>
+      <td>Nominal</td>
+    </tr>
+    <tr>
+      <td>cp</td>
+      <td>Nominal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Para este caso, se ha decidido no utilizar técnicas de Feature Selection avanzadas como Análisis de Componentes Lineales. Por el contrario, se seleccionarán los predictores cuya correlación con la variable objetivo sea alta. Para ello, se definirá un coeficiente de umbral para evaluar si un predictor será utilizado, a partir de su valor de correlación. Es importante entender que este filtro servirá exclusivamente para predictores numéricos. El resto de los atributos permanecerán en el Dataset.</p>
+
+<p>La correlación con la variable de salida puede verse por medio de la matriz de correlación. Tomando una correlación de por lo menos 0.14, es decir mayor a 0.14 y menos a -0.14, el conjunto de predictores que cumplen esta condición es este:</p>
+
+<ul>
+  <li>thalach</li>
+  <li>age</li>
+  <li>thaldur</li>
+  <li>proto</li>
+  <li>chol</li>
+  <li>thalrest</li>
+  <li>oldpeak</li>
+  <li>laddist</li>
+  <li>ladprox</li>
+  <li>lvx4</li>
+  <li>met</li>
+  <li>lmt</li>
+  <li>lfv</li>
+  <li>lvx3</li>
+  <li>painexer</li>
+  <li>rcadist</li>
+  <li>tpeakbps</li>
+  <li>tpeakbpd</li>
+</ul>
+
+<p>Ahora que tenemos el conjunto final de predictores a utilizar, es pertinente evaluar las distintas distribuciones que puedan tener. Este dato es importante especialmente para ciertos algoritmos que tienen un mejor rendimiento con distribuciones gaussianas. También es una oportunidad para evaluar la proporción de clases de la variable objetivo.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-estudio-Proporcion-de-clase.png" alt="" title="Representación de clases de la variable objetivo"></p>
+
+<p>Claramente la primera clase tiene una sobrerepresentación en el Dataset. Los ejemplos que corresponden a esta clase son los pacientes cuya predicción indica que no sufrieron enfermedades cardíacas.</p>
+
+<p>En los predictores seleccionados de tipo continuo no se observa un sesgo o <strong>Skewness</strong> muy pronunciado en ningún sentido. Por lo tanto, considero que los datos sin trasformaciones podrían ser utilizados en primera instancia para evaluar distintos modelos. De ser necesario ajustar alguno de ellos, existen diversas técnicas para transformar estos predictores. La raíz cuadrada, el logaritmo natural y la función inversa son probablemente las más utilizadas para obtener distribuciones más apropiadas, es decir, más parecidas a la normal.</p>
+
+<h2 id="modelo">
+<a class="anchor" href="#modelo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modelo</h2>
+
+<h3 id="elección-del-modelo">
+<a class="anchor" href="#elecci%C3%B3n-del-modelo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elección del modelo</h3>
+
+<p>La generación del modelo depende en gran parte del tipo de problema que estemos atacando, esto implica lo que queremos conseguir con el modelo y también la naturaleza del problema. Para comenzar, estamos frente a un problema de clasificación supervisada. Esto se debe a que cada ejemplo en nuestro Dataset está etiquetado con el valor de una variable objetivo dada.</p>
+
+<p>El objetivo del modelo será abstraer la relación existente entre los datos de entrada y la salida a partir de los valores presentes en el Dataset. Además, estamos buscando ubicar los nuevos registros en cada una de las clases de la variable objetivo, que en este caso son 5 distintas, eso significa que estamos ante un problema de clasificación multivariable.</p>
+
+<p>Ante esta situación, creo que una buena decisión sería comenzar con un Árbol de Decisión. Luego de evaluar el modelo, optaría por avanzar a un modelo de ensamble de Random Forest y revisar las métricas con respecto al modelo anterior.</p>
+
+<h3 id="separación-de-datos-para-entrenamiento-y-test">
+<a class="anchor" href="#separaci%C3%B3n-de-datos-para-entrenamiento-y-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Separación de datos para Entrenamiento y Test</h3>
+<p>El entrenamiento del modelo se realizará con una parte mayoritaria del Dataset. Esto implica una división donde una parte se utilizará en el entrenamiento y el resto de ejemplos para probar el modelo generado. En este caso, optaré por seguir la regla del <strong>70 / 30</strong>. La partición del Dataset puede ser realizada en Rapidminer mediante el operador “<em>Split Data</em>”.</p>
+
+<p>La selección de ejemplos para cada una de las particiones debe tener un criterio, esta configuración se conoce como <em>Sampling Type</em>. En principio se ofrecen varias opciones en el operador de <em>Split</em>, las más recomendables son muestreo aleatorio y muestro estratificado. En este caso usaremos el estratificado para mantener la proporción de clases del Dataset original en estas nuevas particiones.</p>
+
+<p>El flujo debería verse de la siguiente manera:</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Flujo-pre-modelo.png" alt="" title="Flujo de Rapidminer antes del entrenamiento"></p>
+
+<p>El entrenamiento se realizará aplicando un K-Fold Cross Validation utilizando un valor de K estándar de 10. Esta técnica permite general un modelo más realista, aprovechando la información que aporta el Dataset al máximo. Esto se logra ejecutando distintas versiones del modelo y optimizando una métrica en particular. El proceso divide el dataset en K partes iguales y entrena usando K - 1 partes en cada iteración. Asegurar la independencia de los datasets de test es un factor clave para el éxito de esta técnica.</p>
+
+<p>Dentro del operador de Cross Validation, ubicamos el operador de <em>Árbol de decisión</em> con los parámetros por defecto. En principio esto servirá para evaluar la performance general del modelo y encaminar una mejora del modelo utilizando este algoritmo de clasificación.</p>
+
+<p>El modelo debería verse de la siguiente manera:</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-Estudio-Modelo-Arbol-Decision.png" alt="" title="Flujo de Rapidminer final"></p>
+
+<h3 id="evaluación-del-árbol-de-decisión">
+<a class="anchor" href="#evaluaci%C3%B3n-del-%C3%A1rbol-de-decisi%C3%B3n" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evaluación del Árbol de Decisión</h3>
+
+<p>Los resultados preliminares de performance indican un rendimiento aceptable. El principal componente a analizar en esta fase preliminar es la Matriz de Confusión. Aquí se presentan las distintas clases a predecir y la correspondencia con los valores predichos. De esta tabla pueden obtenerse los falsos positivos, los falsos negativos, los verdaderos positivos y verdaderos negativos. En el caso ideal, todos los valores predichos corresponderán con los valores reales, el modelo tendrá un 100% de precisión y también la matriz de confusión tendrá valores distintos de cero exclusivamente en la diagonal principal.</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-Estudio-Matriz-Confusion-2.png" alt="" title="Matriz de confusión para modelo de Árbol de decisión"></p>
+
+<p>Por medio de la matriz de confusión, se pueden obtener también métricas interesantes a analizar en un problema multiclase. La más destacada se llama <strong>Class Recall</strong> la proporción de casos en que el modelo predijo bien esa clase en particular. Este dato resulta importante ya que nos indica el nivel de funcionamiento del modelo para una clase en particular.</p>
+
+<p>En este caso de estudio, la variable objetivo tendrá un valor entero entre 0 y 4, siendo las clases extremas las más relevantes. Aquellos pacientes que tengan un 0 en la predicción, tendrán una probabilidad muy baja de tener una enfermedad cardíaca. Lo contrario sucede para aquellos que obtienen 3 o 4, donde es muy importante que la situación sea detectada para poder tratar y prevenir mayores consecuencias.</p>
+
+<p>El peor <em>Recall</em> obtenido es para la clase 2 que esté en medio, con un 16.28%. Sin embargo, esto no parecería ser tan crítico porque la mayoría de las predicciones erradas dieron un resultado entre 1 y 3, valores no muy extremos que se encuentran en esa zona intermedia de riesgo.</p>
+
+<p>Debemos recordar que al principio nos encontramos con un Dataset desbalanceado, existían muchos más ejemplos de la clase 0 que de las demás clases. Esto es peligroso al momento de validar un modelo porque sesga el resultado de <strong>Accuracy</strong>. Si el modelo clasifica todos los ejemplos como la clase predominante, el error de algunos ejemplos (las clases menos representadas) significarán poco con respecto al total. Una herramienta útil para estas situaciones es el balanceo por pesos, donde los registros del entrenamiento se ponderan según la clase que tienen asignada. Este criterio de ponderación busca igualar la representación de clases en los ejemplos del Dataset.</p>
+
+<h3 id="comparación-con-random-forest">
+<a class="anchor" href="#comparaci%C3%B3n-con-random-forest" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparación con Random Forest</h3>
+
+<p>La mayor parte de los modelos de producción utilizan un enfoque conocido como <em>Ensambles</em>. Esta técnica tiene como objetivo reducir los errores de un modelo en particular con respecto a un dataset en particular. Es posible que la solución encontrada aprenda demasiado de un Dataset y temrine asimilando el ruido de los datos como información útil. Si bien localmente puede que la solución sea útil, no lo será en la generalidad del espacio de posibilidades. Entonces, resulta úlil evaluar la <em>opinión</em> que distintos modelos puedan tener para una predicción en particular.</p>
+
+<p>De esta manera, se generan distintos algoritmos para elegir un resultado como respuesta, en base a las respuestas emitidas por los modelos individuales. Esto se puede generar de distintas maneras. Se podría tener una colección de modelos variando las siguientes características:</p>
+
+<ul>
+  <li>Ejemplos para entrenamiento del modelo</li>
+  <li>Algoritmo del modelo</li>
+  <li>Parámetros del modelo</li>
+  <li>Predictores del Dataset</li>
+</ul>
+
+<p>En este caso, aplicaré un <strong>Random Forest</strong> para evaluar si el rendimiento general del modelo obtiene una mejora. Para ello, reemplazo el operador de <em>Árbol de decisión</em> por el de Random Forest y configuro para que utilice un tamaño de 1000 árboles y el criterio de votación sea por confianza.</p>
+
+<p>Estos son los resultados de la ejecución de ese modelo:</p>
+
+<p><img src="/Machine-Learning-Portfolio/images/Caso-de-Estudio-Matriz.Confusi%C3%B3n-3.png" alt="" title="Matriz de confusión para modelo de Random Forest"></p>
+
+<p>Como se puede ver en la matriz de confusión, los distintos Class Recall mejoraron bastante en comparación con los resultados del árbol de decisión. Esto me aporta mayor confianza a la hora de utilizar este modelo de ensamble.</p>
+
+<p>También vemos incrementada la precisión del modelo en general, ahora tenemos un 81.04%.</p>
 
 
   </div><a class="u-url" href="/Machine-Learning-Portfolio/2021/11/25/Caso-de-Estudio-Predicci%C3%B3n-de-enfermedad-del-coraz%C3%B3n.html" hidden></a>
