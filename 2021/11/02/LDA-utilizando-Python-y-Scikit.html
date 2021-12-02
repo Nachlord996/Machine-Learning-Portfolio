@@ -98,13 +98,17 @@ window.onload = wrap_img;
 
 <p>Para este proceso se utilizarán las librerías de Scikit-learn, Matplotlib y Pandas. Para evitar complicaciones mayores accederé a un documento de Google Colab y escribiré el código Python en un Jupyter Notebook.</p>
 
-<p><img src="assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image1.png" alt="Texto Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image1.png" alt="" /></p>
+
+<p>##</p>
+
+<p>##</p>
 
 <h2 id="graficar-dataset-en-dos-dimensiones">Graficar Dataset en dos dimensiones</h2>
 
 <p>Al disponer de únicamente dos variables, la linealidad del problema puede verse representada mediante un gráfico de tipo “Plot” de ambos predictores. Esto puede ser realizado mediante la librería Matplotlib, manipulando previamente las columnas al invocar el método de graficar.</p>
 
-<p><img src="assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image2.png" alt="Gráfico, Gráfico de burbujas Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image2.png" alt="" /></p>
 
 <p>En el gráfico se ve claramente la separación de ambas clases en dos grupos disjuntos. Por lo tanto, podemos asegurar que la utilización de un modelo lineal para trabajar este Dataset es apropiada.</p>
 
@@ -120,7 +124,7 @@ window.onload = wrap_img;
 
 <p>Para entrenar el modelo LDA se utilizan los métodos importados de scikit-learn.</p>
 
-<p><img src="assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image5.png" alt="Una captura de pantalla de un celular con texto e imagen Descripción generada automáticamente con confianza media" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image5.png" alt="" /></p>
 
 <p>##</p>
 
@@ -128,13 +132,13 @@ window.onload = wrap_img;
 
 <p>Para validar el entrenamiento del modelo, utilizaremos los ejemplos que mantuvimos fuera del entrenamiento. Es importante tener también los valores reales de la variable objetivo para poder compararlos con las predicciones del modelo.</p>
 
-<p><img src="assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image6.png" alt="Texto, Carta Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image6.png" alt="" /></p>
 
 <p>Los resultados muestran que el modelo realizó una predicción correcta en todos los casos de validación. También es de utilidad examinar la matriz de confusión de las pruebas.</p>
 
 <p>Esto se puede realizar mediante el método <em>confusion_matrix</em> de Scikit-learn Metrics.</p>
 
-<p><img src="assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image7.png" alt="Interfaz de usuario gráfica, Texto Descripción generada automáticamente con confianza media" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-11-02-LDA-utilizando-Python-y-Scikit/media/image7.png" alt="" /></p>
 
 <p>Cada columna representa las predicciones que el modelo realizó, mientras que las filas los valores reales tomados del Dataset de validación. Si todos los valores de la matriz con ceros a excepción de la diagonal principal, el modelo habrá funcionado perfectamente. En caso contrario nos encontraremos con falsos positivos o falsos negativos, situaciones donde el modelo realizó la predicción incorrecta.</p>
 

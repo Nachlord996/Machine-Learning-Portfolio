@@ -115,17 +115,17 @@ window.onload = wrap_img;
 
 <p>Luego se debe leer el contenido del archivo “Titanic-Dataset.csv”. Al ejecutar el código se puede visualizar una vista previa de los registros. Debería verse de esta manera:</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image1.png" alt="Icono Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image1.png" alt="" /></p>
 
 <h2 id="visualizar-dataset">Visualizar Dataset</h2>
 
 <p>Por medio de las siguientes instrucciones es posible identificar las columnas con valores numéricos. El resto de los atributos son de tipo categórico.</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image2.png" alt="Interfaz de usuario gráfica, Texto Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image2.png" alt="" /></p>
 
 <p>La generación de gráficos para visualizar el Dataset puede realizarse mediante la librería Seaborn. Para ejemplificar, es posible generar un gráfico que ilustre la tasa de sobrevivientes, partiendo de la clase y el sexo del individuo.</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image3.png" alt="Gráfico, Gráfico de barras Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image3.png" alt="" /></p>
 
 <p>##</p>
 
@@ -133,7 +133,7 @@ window.onload = wrap_img;
 
 <p>Este Dataset presenta valores faltantes únicamente en los atributos Age, Cabin y Embarked. Para verificar esto, se utiliza el siguiente código:</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image4.png" alt="Imagen que contiene Tabla Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image4.png" alt="" /></p>
 
 <p>Como se puede ver en este conteo de valores faltantes, los atributos más impactados son Age y Cabin. En el caso de edad, será necesario aplicar una imputación de valores, siendo este atributo importante en la predicción del modelo. Probablemente, los atributos Cabin y Embarked no impacten significativamente en el desempeño del modelo, por lo que se podría considerar eliminarlos.</p>
 
@@ -141,15 +141,15 @@ window.onload = wrap_img;
 
 <p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image5.png" alt="" /></p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image6.png" alt="Gráfico Descripción generada automáticamente con confianza baja" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image6.png" alt="" /></p>
 
 <p>Para decidir el valor que será imputado al atributo edad, es conveniente analizar la distribución de este. Esto se puede realizar mediante la librería matplotlib.</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image7.png" alt="Gráfico, Gráfico de líneas, Histograma Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image7.png" alt="" /></p>
 
 <p>La distribución observada es bastante centrada pero algo inclinada hacia un lado, por lo que una buena decisión sería imputar la edad utilizando la mediana de los datos. Esto se realiza mediante el siguiente código:</p>
 
-<p><img src="assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image8.png" alt="Interfaz de usuario gráfica, Texto, Aplicación Descripción generada automáticamente" /></p>
+<p><img src="https://Nachlord996.github.io/Machine-Learning-Portfolio/assets/img/2021-10-29-Preparación-de-datos-con-Python/media/image8.png" alt="" /></p>
 
 <p>Al concluir este paso, tenemos asegurado que los datos no contienen datos faltantes. Por lo que serán de mayor utilidad y precisión a la hora de entrenar el modelo.</p>
 
