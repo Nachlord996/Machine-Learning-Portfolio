@@ -4,6 +4,7 @@ layout: post
 description: "Proceso de principio a fin de Machine Learning trabajando sobre un caso real en el ámbito de la Medicina"
 categories: ["Caso de estudio", "Árbol de decisión", "Random Forest", "Rapidminer", "Preparación de los datos", "Entrenamiento"]
 title: "Caso de Estudio: Detección de enfermedad cardíaca"
+image: images/Caso-de-estudio-logo.jpg
 sticky_rank: 1
 ---
 ## Contexto del problema
