@@ -1,7 +1,7 @@
 ---
 toc: true
 layout: post
-description: ""
+description: "Proceso de principio a fin de Machine Learning trabajando sobre un caso real en el ámbito de la Medicina"
 categories: ["Caso de estudio", "Árbol de decisión", "Random Forest", "Rapidminer", "Preparación de los datos", "Entrenamiento"]
 title: "Caso de Estudio: Detección de enfermedad cardíaca"
 sticky_rank: 1
