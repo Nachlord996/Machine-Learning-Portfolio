@@ -8,15 +8,15 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Revisión de técnincas de aprendizaje no supervisado: K-means" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Anáisis de grupos o clusters en pacientes con enfermedad coronaria" />
-<meta property="og:description" content="Anáisis de grupos o clusters en pacientes con enfermedad coronaria" />
+<meta name="description" content="Análisis de grupos o clústers en pacientes con enfermedad coronaria" />
+<meta property="og:description" content="Análisis de grupos o clústers en pacientes con enfermedad coronaria" />
 <link rel="canonical" href="https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html" />
 <meta property="og:url" content="https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html" />
 <meta property="og:site_name" content="Ignacio Martínez" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-11-28T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html","@type":"BlogPosting","headline":"Revisión de técnincas de aprendizaje no supervisado: K-means","dateModified":"2021-11-28T00:00:00-06:00","datePublished":"2021-11-28T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html"},"description":"Anáisis de grupos o clusters en pacientes con enfermedad coronaria","@context":"https://schema.org"}</script>
+{"url":"https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html","@type":"BlogPosting","headline":"Revisión de técnincas de aprendizaje no supervisado: K-means","dateModified":"2021-11-28T00:00:00-06:00","datePublished":"2021-11-28T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://nachlord996.github.io/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html"},"description":"Análisis de grupos o clústers en pacientes con enfermedad coronaria","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/Machine-Learning-Portfolio/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://nachlord996.github.io/Machine-Learning-Portfolio/feed.xml" title="Ignacio Martínez" /><link rel="shortcut icon" type="image/x-icon" href="/Machine-Learning-Portfolio/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -71,7 +71,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Revisión de técnincas de aprendizaje no supervisado: K-means</h1><p class="page-description">Anáisis de grupos o clusters en pacientes con enfermedad coronaria</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-28T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Revisión de técnincas de aprendizaje no supervisado: K-means</h1><p class="page-description">Análisis de grupos o clústers en pacientes con enfermedad coronaria</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-11-28T00:00:00-06:00" itemprop="datePublished">
         Nov 28, 2021
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -100,7 +100,11 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-</ul>
+</ul><p>Los métodos de aprendizaje automático se pueden dividir en dos grandes enfoques, los supervisados y los no supervisados. El primero se basa en el uso de Datasets etiquetados. Esta información es utilizado en el entrenamiento de un modelo para que este aprenda las relaciones que existen entre los datos de entrada y una variable objetivo. Por esto mismo, este enfoque se centra en generar la capacidad de predicción a partir de ejemplos nuevos, con una precisión aceptable.</p>
+
+<p>Por otra parte, los algoritmos de Machine Learning no supervisados tienen el objetivo de trabajar con datos no etiquetados. No existe una variable objetivo a predecir ni un comportamiento en particular para simular. Este tipo de algoritmos se caracterizan por encontrar patrones y otorgar mayor información sobre un conjunto de datos existente. Dentro de este conjunto se encuentra el algoritmo a tratar en este artículo: K-Means.</p>
+
+<p>K-Means es un algoritmo no supervisado de Clustering. Está pensado para descubrir los distintos grupos que puedan existir en un Dataset sin ese conocimiento previamente.</p>
 
   </div><a class="u-url" href="/Machine-Learning-Portfolio/clustering/k-means/rapidminer/2021/11/28/Revision-de-t%C3%A9cnicas-de-aprendizaje-no-supervisado-k-means.html" hidden></a>
 </article>
